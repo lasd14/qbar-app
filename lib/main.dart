@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:qbar_app/custom_theme.dart';
-import 'package:qbar_app/home_page.dart';
+import 'package:qbar_app/ui/themes/custom_theme.dart';
+import 'package:qbar_app/ui/pages/home_page.dart';
 
 void main() => runApp(const MyApp());
 
