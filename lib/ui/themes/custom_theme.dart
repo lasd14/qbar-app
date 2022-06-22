@@ -15,13 +15,14 @@ class CustomTheme {
 
   //Buttons
   static const redLightColor    = Color(0xFFF25858);
-  static const redDarkColor     = Color(0xFFFC0505);
+  static const redDarkColor     = Color(0xFFA70C0C);
   static const greenLightColor  = Color(0xFF27B74F);
   static const greenDarkColor   = Color(0xFF136128);
   static const blueLightColor   = Color(0xFF1175D1);
   static const blueDarkColor    = Color(0xFF11426F);
   static const yellowLightColor = Color(0xFFD8BF2D);
   static const yellowDarkColor  = Color(0xFF87760D);
+  static const rippleColor      = Color(0xFF3E497A);
 
   static final lightTheme = ThemeData.light().copyWith(
     appBarTheme: const AppBarTheme(
