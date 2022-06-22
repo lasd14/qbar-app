@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qbar_app/domain/blocs/blocs.dart';
 import 'package:qbar_app/ui/themes/custom_theme.dart';
 import 'package:qbar_app/ui/widgets/buttons_home.dart';
 import 'package:flutter_ripple/flutter_ripple.dart';
@@ -10,6 +12,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final size = MediaQuery.of(context).size;
+    final scanBloc = BlocProvider.of<ScanBloc>(context);
 
     return Scaffold(
       body: Column(
@@ -32,8 +35,8 @@ class HomePage extends StatelessWidget {
               radius: 100,
               rippleColor: CustomTheme.rippleColor,
               rippleShape: BoxShape.circle,
-              onTap: () {
-                print('Funciona wei');
+              onTap: () async {
+                scanBloc.getScanResult();
               },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
