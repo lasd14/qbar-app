@@ -1,3 +1,4 @@
+import 'package:barcode_scan2/barcode_scan2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qbar_app/domain/blocs/blocs.dart';
@@ -41,8 +42,14 @@ class HomePage extends StatelessWidget {
               rippleShape: BoxShape.circle,
               onTap: () async {
                 if(cameraBloc.state.cameraPermissionGranted){
-                  await scanBloc.getScanResult()
-                  .then((value) => Navigator.push(context, MaterialPageRoute(builder: (context) => ResultPage(scanResult: scanBloc.scanResult,))));
+                  //TODO: This fragment of code can be upgraded
+                  await scanBloc.getScanResult().whenComplete(() => {
+                    if (scanBloc.scanResult!.rawContent == '' || scanBloc.scanResult!.type == ResultType.Cancelled || scanBloc.scanResult!.format == BarcodeFormat.unknown) {
+                      Navigator.pushReplacementNamed(context, 'home'),
+                    } else {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ResultPage(scanResult: scanBloc.scanResult,))),
+                    }
+                  });
                 } else {
                   cameraBloc.cameraAccess();
                 }

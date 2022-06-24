@@ -12,11 +12,14 @@ class ResultPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final size = MediaQuery.of(context).size;
+    final parseUrl = Uri.parse(scanResult!.rawContent);
 
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {}, 
+          onPressed: () {
+            Navigator.of(context).pop();
+          }, 
           icon: const Icon(Icons.arrow_back, color: CustomTheme.whiteColor, size: 26.00),
         ),
         backgroundColor: CustomTheme.primaryColor,
@@ -56,7 +59,7 @@ class ResultPage extends StatelessWidget {
                   const SizedBox(
                     height: 20.0,
                   ),
-                  Text(scanResult!.format.toString(), style: const TextStyle(
+                  Text(scanResult!.format.toString().toUpperCase(), style: const TextStyle(
                     color: CustomTheme.darkColor, 
                     fontWeight: FontWeight.bold, 
                     fontSize: 18.0),
@@ -79,10 +82,10 @@ class ResultPage extends StatelessWidget {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const [
-              ButtonResult(color: CustomTheme.greenLightColor, icon: Icons.share,),
-              ButtonResult(color: CustomTheme.blueLightColor, icon: Icons.copy,),
-              ButtonResult(color: CustomTheme.redLightColor, icon: Icons.open_in_browser,),
+            children: [
+              // ButtonResult(color: CustomTheme.rippleColor, icon: Icons.share, text: 'Compartir'),
+              ButtonResult(color: CustomTheme.rippleColor, icon: Icons.copy, text: 'Copiar', url: parseUrl),
+              ButtonResult(color: CustomTheme.rippleColor, icon: Icons.open_in_browser, text: 'Acceder', url: parseUrl),
             ],
           )
         ],
