@@ -33,7 +33,7 @@ class ScanBloc extends Bloc<ScanEvent, ScanState> {
         options: scanOptions
       );
       scanResult = result;
-      print('📷 $scanResult');
+      print('📷 ${scanResult!.rawContent}');
     } on PlatformException catch (e) {
       scanResult = ScanResult(
         type: ResultType.Error,

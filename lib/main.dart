@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qbar_app/domain/blocs/camera/camera_bloc.dart';
-import 'package:qbar_app/ui/themes/custom_theme.dart';
-import 'package:qbar_app/ui/pages/home_page.dart';
 
+import 'package:qbar_app/ui/themes/custom_theme.dart';
+import 'package:qbar_app/ui/pages/pages.dart';
 import 'domain/blocs/blocs.dart';
 
 void main() {
@@ -29,7 +28,8 @@ class MyApp extends StatelessWidget {
       theme: CustomTheme.lightTheme,
       initialRoute: 'home',
       routes: {
-        'home':(_) => const HomePage()
+        'home'  :(_) => const HomePage(),
+        'result':(_) => const ResultPage(),
       },
     );
   }
