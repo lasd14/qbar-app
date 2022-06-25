@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qbar_app/domain/blocs/blocs.dart';
 import 'package:qbar_app/ui/themes/custom_theme.dart';
 
-class ButtonResult extends StatelessWidget {
-  const ButtonResult({
+class ButtonAccess extends StatelessWidget {
+  const ButtonAccess({
     Key? key,
     required this.color,
     required this.icon,

@@ -1,6 +1,7 @@
-import 'package:barcode_scan2/barcode_scan2.dart';
 import 'package:flutter/material.dart';
-import 'package:qbar_app/ui/pages/result/widgets/button_result.dart';
+import 'package:barcode_scan2/barcode_scan2.dart';
+import 'package:qbar_app/ui/pages/result/widgets/button_access.dart';
+import 'package:qbar_app/ui/pages/result/widgets/button_copy.dart';
 import 'package:qbar_app/ui/themes/custom_theme.dart';
 
 class ResultPage extends StatelessWidget {
@@ -31,7 +32,7 @@ class ResultPage extends StatelessWidget {
         children: [
           Card(
             elevation: 0,
-            margin: const EdgeInsets.all(30.0),
+            margin: const EdgeInsets.only(top: 60.0, left: 40.0, right: 40.0, bottom: 40.0),
             child: Container(
               height: size.height * 0.45,
               width: size.width * 0.90,
@@ -84,8 +85,8 @@ class ResultPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               // ButtonResult(color: CustomTheme.rippleColor, icon: Icons.share, text: 'Compartir'),
-              ButtonResult(color: CustomTheme.rippleColor, icon: Icons.copy, text: 'Copiar', url: parseUrl),
-              ButtonResult(color: CustomTheme.rippleColor, icon: Icons.open_in_browser, text: 'Acceder', url: parseUrl),
+              ButtonCopy(color: CustomTheme.rippleColor, icon: Icons.copy, text: 'Copiar', scanString: scanResult!.rawContent),
+              ButtonAccess(color: CustomTheme.rippleColor, icon: Icons.open_in_browser, text: 'Acceder', url: parseUrl),
             ],
           )
         ],
