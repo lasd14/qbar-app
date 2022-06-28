@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qbar_app/domain/blocs/blocs.dart';
+import 'package:qbar_app/ui/pages/generate/widgets/button_fav.dart';
+import 'package:qbar_app/ui/pages/generate/widgets/button_share.dart';
 import 'package:qbar_app/ui/themes/custom_theme.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
@@ -20,7 +22,7 @@ class GeneratePage extends StatelessWidget {
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).pop();
-          }, 
+          },
           icon: const Icon(Icons.arrow_back, color: CustomTheme.whiteColor, size: 26.00),
         ),
         backgroundColor: CustomTheme.primaryColor,
@@ -36,7 +38,7 @@ class GeneratePage extends StatelessWidget {
             ),
             const Padding(
               padding: EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 10),
-              child: Text('Puedes generar un código QR, escribiendo en el campo de texto', style: TextStyle(
+              child: Text('Genera un código QR, escribiendo en el campo de texto', style: TextStyle(
                 color: CustomTheme.blackColor, 
                 fontWeight: FontWeight.bold, 
                 fontSize: 18.0), textAlign: TextAlign.center,
@@ -46,16 +48,16 @@ class GeneratePage extends StatelessWidget {
               height: 10.0
             ),
             Container(
-              width: size.width * 0.9,
-              height: 350.0,
+              width: size.width * 0.7,
+              height: size.height * 0.3,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.0),
-                color: CustomTheme.whiteColor,
+                color: CustomTheme.transparentColor,
               ),
-              child: generateBloc.getDataCode(generateBloc.generateController.text)
+              child: generateBloc.getScreenshotQr(generateBloc.generateController.text)
             ),
             const SizedBox(
-              height: 15.0,
+              height: 25.0,
             ),
             SizedBox(
               width: size.width * 0.9,
@@ -78,12 +80,15 @@ class GeneratePage extends StatelessWidget {
                     ),
                   ),
                   prefixIcon: const Icon(Icons.qr_code, color: CustomTheme.rippleColor,),
-                  suffixIcon: IconButton(
+                  //TODO: THIS CODE NEED TO VE REVIEWED, THE SUFFIXICON NEED TO BE DYNAMICALLY CHANGED
+                  suffixIcon: (generateBloc.generateController.text != '') 
+                  ? IconButton(
                     onPressed: () {
                       generateBloc.generateController.clear();
                     }, 
                     icon: const Icon(Icons.clear, color: CustomTheme.blackColor,),
-                  ),
+                  )
+                  : const SizedBox(),
                   hintText: '¿Qué quieres generar?',
                 ),
                 enableSuggestions: true,
@@ -164,6 +169,16 @@ class GeneratePage extends StatelessWidget {
                 child: const Text('Generar QR', style: TextStyle(color: CustomTheme.whiteColor, fontWeight: FontWeight.bold, fontSize: 16.0),),
               ),
             ),
+            const SizedBox(
+              height: 30.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: const [
+                ButtonFav(),
+                ButtonShare()
+              ],
+            )
 
           ],
         ),
