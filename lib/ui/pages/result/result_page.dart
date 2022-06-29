@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:barcode_scan2/barcode_scan2.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qbar_app/domain/blocs/blocs.dart';
+import 'package:qbar_app/ui/pages/generate/widgets/button_share.dart';
 import 'package:qbar_app/ui/pages/result/widgets/button_access.dart';
 import 'package:qbar_app/ui/pages/result/widgets/button_copy.dart';
+import 'package:qbar_app/ui/pages/result/widgets/button_sharing.dart';
 import 'package:qbar_app/ui/themes/custom_theme.dart';
 
 class ResultPage extends StatelessWidget {
@@ -14,6 +18,7 @@ class ResultPage extends StatelessWidget {
 
     final size = MediaQuery.of(context).size;
     final parseUrl = Uri.parse(scanResult!.rawContent);
+    final scanBloc = BlocProvider.of<ScanBloc>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -52,26 +57,19 @@ class ResultPage extends StatelessWidget {
               padding: const EdgeInsets.all(50.0),
               child: Column(
                 children: [
-                  Image.asset(
-                    'assets/qrcode_b.png',
-                    scale: 1.5,
-                    alignment: Alignment.center,
-                  ),
-                  const SizedBox(
-                    height: 20.0,
-                  ),
+                  scanBloc.getScreenshotCodeScanned(scanResult!.rawContent),
                   Text(scanResult!.format.toString().toUpperCase(), style: const TextStyle(
                     color: CustomTheme.darkColor, 
                     fontWeight: FontWeight.bold, 
                     fontSize: 18.0),
                   ),
                   const SizedBox(
-                    height: 10.0,
+                    height: 5.0,
                   ),
                   Text(scanResult!.rawContent, style: const TextStyle(
                     color: CustomTheme.darkColor, 
                     fontWeight: FontWeight.bold, 
-                    fontSize: 16.0, 
+                    fontSize: 14.0, 
                     overflow: TextOverflow.ellipsis), maxLines: 1, textAlign: TextAlign.center),
                 ],
               ),
@@ -84,9 +82,9 @@ class ResultPage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              // ButtonResult(color: CustomTheme.rippleColor, icon: Icons.share, text: 'Compartir'),
               ButtonCopy(color: CustomTheme.rippleColor, icon: Icons.copy, text: 'Copiar', scanString: scanResult!.rawContent),
               ButtonAccess(color: CustomTheme.rippleColor, icon: Icons.open_in_browser, text: 'Acceder', url: parseUrl),
+              ButtonSharing(onPressed: () {scanBloc.shareScreenshotCodeScanned();},),  
             ],
           )
         ],

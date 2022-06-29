@@ -24,7 +24,7 @@ class ButtonCopy extends StatelessWidget {
       children: [
         CircleAvatar(
           backgroundColor: color,
-          radius: 30.0,
+          radius: 35.0,
           child: IconButton(
             onPressed: () {
               Clipboard.setData(ClipboardData(text: scanString));
@@ -49,7 +49,7 @@ class ButtonCopy extends StatelessWidget {
                 )
               );
             },
-            icon: Icon(icon, color: CustomTheme.whiteColor, size: 30.0),
+            icon: Icon(icon, color: CustomTheme.whiteColor, size: 35.0),
           ),
         ),
         const SizedBox(

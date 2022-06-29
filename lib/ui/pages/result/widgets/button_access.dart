@@ -23,13 +23,13 @@ class ButtonAccess extends StatelessWidget {
       children: [
         CircleAvatar(
           backgroundColor: color,
-          radius: 30.0,
+          radius: 35.0,
           child: IconButton(
             onPressed: () {
               final scanBloc = BlocProvider.of<ScanBloc>(context);
               scanBloc.launchCode(url);
             },
-            icon: Icon(icon, color: CustomTheme.whiteColor, size: 30.0),
+            icon: Icon(icon, color: CustomTheme.whiteColor, size: 35.0),
           ),
         ),
         const SizedBox(

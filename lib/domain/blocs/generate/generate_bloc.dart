@@ -23,19 +23,22 @@ class GenerateBloc extends Bloc<GenerateEvent, GenerateState> {
   Widget getDataCode(String dataCode) {
 
     add(OnCodeGeneratedEvent(dataCode));
-    return Center(
-      child: QrImage(
-        data: dataCode, 
-        version: QrVersions.auto,
-        size: 250.0,
-      ),
+    return QrImage(
+      data: dataCode, 
+      version: QrVersions.auto,
+      size: 250.0,
     );
   }
 
   Widget getScreenshotQr(String dataCode) {
-    return RepaintBoundary(
-      key: previewContainer,
-      child: getDataCode(dataCode),
+    return Padding(
+      padding: const EdgeInsets.only(left: 13.0),
+      child: Center(
+        child: RepaintBoundary(
+          key: previewContainer,
+          child: getDataCode(dataCode),
+        ),
+      ),
     );
   }
   
