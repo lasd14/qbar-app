@@ -107,7 +107,7 @@ class HomePage extends StatelessWidget {
                   colorDark: CustomTheme.greenDarkColor,
                   icon: Icons.bookmark_rounded,
                   nameIcon: 'Favoritos',
-                  route: '',
+                  route: 'favorites',
                 ),
               ],
             ),

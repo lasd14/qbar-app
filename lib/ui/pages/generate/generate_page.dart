@@ -4,7 +4,6 @@ import 'package:qbar_app/domain/blocs/blocs.dart';
 import 'package:qbar_app/ui/pages/generate/widgets/button_fav.dart';
 import 'package:qbar_app/ui/pages/generate/widgets/button_share.dart';
 import 'package:qbar_app/ui/themes/custom_theme.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 
 class GeneratePage extends StatelessWidget {
@@ -131,9 +130,9 @@ class GeneratePage extends StatelessWidget {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
-                ButtonFav(),
-                ButtonShare()
+              children: [
+                ButtonFav( scanResult: generateBloc.generateController.text ),
+                const ButtonShare()
               ],
             )
 
