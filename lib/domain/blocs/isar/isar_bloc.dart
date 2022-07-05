@@ -10,9 +10,11 @@ part 'isar_state.dart';
 class IsarBloc extends Bloc<IsarEvent, IsarState> {
 
   late Isar isar;
+  late List<Favorites> results = [];
 
   IsarBloc() : super(const IsarState()) {
     on<OnIsarInstanceEvent>((event, emit) => emit( state.copyWith( isar: event.isar )));
+    on<OnFavoritesListEvent>((event, emit) => emit( state.copyWith( favorites: event.favorites )));
   }
 
   //Open an instance of the local Isar database
@@ -37,6 +39,14 @@ class IsarBloc extends Bloc<IsarEvent, IsarState> {
       favorite.id = await isar.favoritess.put(favorite);
       print('✅ ${favorite.id}');
     });
+  }
+
+  //Get all the favorites QR from the local Isar database
+  Future getAllFavorites() async {
+    final allFavorites = await isar.favoritess.where().findAll();
+    results = allFavorites;
+    // .map((favorites) => Favorites.fromJson(favorites)).toList()
+    add(OnFavoritesListEvent(results));
   }
   
 }

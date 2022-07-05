@@ -25,6 +25,7 @@ class CustomTheme {
   static const rippleColor      = Color(0xFF3E497A);
 
   static final lightTheme = ThemeData.light().copyWith(
+    scaffoldBackgroundColor: Colors.white,
     appBarTheme: const AppBarTheme(
       centerTitle: true,
       iconTheme: IconThemeData(color: Colors.black),
