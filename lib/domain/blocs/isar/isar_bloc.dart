@@ -37,7 +37,7 @@ class IsarBloc extends Bloc<IsarEvent, IsarState> {
     //Insert the favorites QR into the database
     await state.isar!.writeTxn((isar) async {
       favorite.id = await isar.favoritess.put(favorite);
-      print('✅ ${favorite.id}');
+      print('✅ ${DateTime.now().day} ${favorite.id}');
     });
   }
 

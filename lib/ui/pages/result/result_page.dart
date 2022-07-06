@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:barcode_scan2/barcode_scan2.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qbar_app/domain/blocs/blocs.dart';
-import 'package:qbar_app/ui/pages/generate/widgets/button_share.dart';
 import 'package:qbar_app/ui/pages/result/widgets/button_access.dart';
 import 'package:qbar_app/ui/pages/result/widgets/button_copy.dart';
 import 'package:qbar_app/ui/pages/result/widgets/button_sharing.dart';

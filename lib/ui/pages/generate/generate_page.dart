@@ -111,7 +111,6 @@ class GeneratePage extends StatelessWidget {
                 onPressed: () {
 
                   generateCode(generateBloc, context);
-                  generateBloc.generateController.clear();
 
                 },
                 style: ElevatedButton.styleFrom(
@@ -131,7 +130,7 @@ class GeneratePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ButtonFav( scanResult: generateBloc.generateController.text ),
+                ButtonFav( scanResult: generateBloc.generateController.text, generateBloc: generateBloc, ),
                 const ButtonShare()
               ],
             )

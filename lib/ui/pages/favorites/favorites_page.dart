@@ -3,6 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qbar_app/domain/blocs/blocs.dart';
 import 'package:qbar_app/ui/themes/custom_theme.dart';
 
+import 'widgets/button_browserfavorite.dart';
+import 'widgets/button_sharefavorite.dart';
+
 class FavoritesPage extends StatelessWidget {
   const FavoritesPage({Key? key}) : super(key: key);
 
@@ -10,6 +13,7 @@ class FavoritesPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final isarBloc = BlocProvider.of<IsarBloc>(context);
+    final favoritesBloc = BlocProvider.of<FavoritesBloc>(context);
 
     isarBloc.getAllFavorites();
 
@@ -21,7 +25,7 @@ class FavoritesPage extends StatelessWidget {
             Navigator.of(context).pop();
           },
           icon: const Icon(Icons.arrow_back,
-              color: CustomTheme.whiteColor, size: 26.00),
+              color: CustomTheme.whiteColor, size: 26.0),
         ),
         backgroundColor: CustomTheme.primaryColor,
         elevation: 0,
@@ -37,7 +41,7 @@ class FavoritesPage extends StatelessWidget {
           const SizedBox(height: 30.0),
           const Center(
             child: Text(
-              'Códigos QR guardados',
+              'Códigos QR Favoritos',
               style: TextStyle(
                   color: CustomTheme.primaryColor,
                   fontWeight: FontWeight.bold,
@@ -54,8 +58,9 @@ class FavoritesPage extends StatelessWidget {
                   itemCount: favorites.length,
                   itemBuilder: (BuildContext context, int index) {
                     final favorite = favorites[index];
+                    final parseUrl = Uri.parse(favorite.qrscan);
                     return Padding(
-                      padding: const EdgeInsets.all(12.0),
+                      padding: const EdgeInsets.only(top: 6.0, left: 12.0, right: 12.0, bottom: 6.0),
                       child: Card(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12.0),
@@ -64,15 +69,13 @@ class FavoritesPage extends StatelessWidget {
                           height: 100,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12.0),
-                              color: CustomTheme.lightColor),
+                              color: CustomTheme.secondaryColor),
                           child: Row(
                             children: [
                               Center(
                                 child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 10.0, left: 10.0, bottom: 10.0),
-                                  //TODO: AQUI IRIA EL CODIGO QR GENERADO POR QR_FLUTTER QUE VA GUARDADO EN LA BASE DE DATOS
-                                  child: Image.asset('assets/qrcode_b.png'),
+                                  padding: const EdgeInsets.only(top: 10.0, left: 10.0, bottom: 10.0),
+                                  child: favoritesBloc.getDataCode(favorite.qrscan)
                                 ),
                               ),
                               Expanded(
@@ -107,28 +110,13 @@ class FavoritesPage extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.only(right: 25.0),
                                     child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: const [
-                                        CircleAvatar(
-                                          backgroundColor:
-                                              CustomTheme.primaryColor,
-                                          radius: 23.0,
-                                          child: Icon(Icons.copy,
-                                              color: CustomTheme.whiteColor,
-                                              size: 23.0),
-                                        ),
-                                        SizedBox(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        ButtonBrowserFavorite(url: parseUrl),
+                                        const SizedBox(
                                           width: 5.0,
                                         ),
-                                        CircleAvatar(
-                                          backgroundColor:
-                                              CustomTheme.primaryColor,
-                                          radius: 23.0,
-                                          child: Icon(Icons.share,
-                                              color: CustomTheme.whiteColor,
-                                              size: 23.0),
-                                        ),
+                                        ButtonShareFavorite(),
                                       ],
                                     ),
                                   )

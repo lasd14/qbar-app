@@ -15,6 +15,7 @@ void main() async {
         BlocProvider(create: (context) => CameraBloc()),
         BlocProvider(create: (context) => GenerateBloc()), 
         BlocProvider(create: (context) => IsarBloc()),
+        BlocProvider(create: (context) => FavoritesBloc()),
       ], 
       child: const MyApp()
     )

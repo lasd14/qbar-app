@@ -1,32 +1,31 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:qbar_app/ui/themes/custom_theme.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:share_files_and_screenshot_widgets/share_files_and_screenshot_widgets.dart';
-// import 'package:screenshot/screenshot.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-part 'generate_event.dart';
-part 'generate_state.dart';
+part 'favorites_event.dart';
+part 'favorites_state.dart';
 
-class GenerateBloc extends Bloc<GenerateEvent, GenerateState> {
+class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
 
-  final TextEditingController generateController = TextEditingController();
   GlobalKey previewContainer = GlobalKey();
-  int originalSize = 800;
-  // final ScreenshotController screenshotController = ScreenshotController();
-  // Uint8List? imageFile;
+  int originalSize = 100;
 
-  GenerateBloc() : super(const GenerateState()) {
-    on<OnCodeGeneratedEvent>((event, emit) => emit(state.copyWith(dataCode: event.dataCode)));
+  FavoritesBloc() : super(const FavoritesState()) {
+    on<OnCodeFavoritesEvent>((event, emit) => emit( state.copyWith( dataCode: event.dataCode )));
   }
 
   Widget getDataCode(String dataCode) {
 
-    add(OnCodeGeneratedEvent(dataCode));
+    add(OnCodeFavoritesEvent(dataCode));
     return QrImage(
       data: dataCode, 
       version: QrVersions.auto,
-      size: 250.0,
+      size: 80.0,
+      foregroundColor: CustomTheme.whiteColor,
     );
   }
 
@@ -54,4 +53,9 @@ class GenerateBloc extends Bloc<GenerateEvent, GenerateState> {
     );
   }
 
+  void launchCode(Uri url) async {
+    if (!await launchUrl(url)) {
+      throw 'Could not launch $url';
+    }
+  }
 }
