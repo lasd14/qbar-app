@@ -116,7 +116,7 @@ class FavoritesPage extends StatelessWidget {
                                         const SizedBox(
                                           width: 5.0,
                                         ),
-                                        ButtonShareFavorite(),
+                                        const ButtonShareFavorite(),
                                       ],
                                     ),
                                   )

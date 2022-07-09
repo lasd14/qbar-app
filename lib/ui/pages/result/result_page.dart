@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qbar_app/domain/blocs/blocs.dart';
 import 'package:qbar_app/ui/pages/result/widgets/button_access.dart';
 import 'package:qbar_app/ui/pages/result/widgets/button_copy.dart';
+import 'package:qbar_app/ui/pages/result/widgets/button_save.dart';
 import 'package:qbar_app/ui/pages/result/widgets/button_sharing.dart';
 import 'package:qbar_app/ui/themes/custom_theme.dart';
 
@@ -83,7 +84,16 @@ class ResultPage extends StatelessWidget {
             children: [
               ButtonCopy(color: CustomTheme.rippleColor, icon: Icons.copy, text: 'Copiar', scanString: scanResult!.rawContent),
               ButtonAccess(color: CustomTheme.rippleColor, icon: Icons.open_in_browser, text: 'Acceder', url: parseUrl),
-              ButtonSharing(onPressed: () {scanBloc.shareScreenshotCodeScanned();},),  
+            ],
+          ),
+          const SizedBox(
+            height: 15.0,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ButtonSharing(onPressed: () {scanBloc.shareScreenshotCodeScanned();},),
+              ButtonSave(color: CustomTheme.rippleColor, icon: Icons.bookmark, text: 'Guardar', scanResult: scanResult!.rawContent,),
             ],
           )
         ],
