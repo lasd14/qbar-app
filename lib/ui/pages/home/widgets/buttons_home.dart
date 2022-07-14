@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qbar_app/domain/blocs/blocs.dart';
 import 'package:qbar_app/ui/themes/custom_theme.dart';
 
 class ButtonsHome extends StatelessWidget {

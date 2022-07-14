@@ -11,3 +11,7 @@ class OnCodeFavoritesEvent extends FavoritesEvent {
   final String dataCode;
   const OnCodeFavoritesEvent(this.dataCode);
 }
+
+class OnDataIsLoadedEvent extends FavoritesEvent {}
+
+class OnDataIsNotLoadedEvent extends FavoritesEvent {}

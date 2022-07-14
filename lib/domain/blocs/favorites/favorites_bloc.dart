@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +18,8 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
 
   FavoritesBloc() : super(const FavoritesState()) {
     on<OnCodeFavoritesEvent>((event, emit) => emit( state.copyWith( dataCode: event.dataCode )));
+    on<OnDataIsLoadedEvent>((event, emit) => emit( state.copyWith( isLoaded: true )));
+    on<OnDataIsNotLoadedEvent>((event, emit) => emit( state.copyWith( isLoaded: false )));
   }
 
   Widget getDataCode(String dataCode) {
@@ -57,5 +61,17 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     if (!await launchUrl(url)) {
       throw 'Could not launch $url';
     }
+  }
+
+  Future loadData() async {
+    Future.delayed(const Duration(milliseconds: 2000), () {
+      add(OnDataIsLoadedEvent());
+    });
+  }
+
+  Future notLoadData() async {
+    Future.delayed(const Duration(milliseconds: 1000), () {
+      add(OnDataIsNotLoadedEvent());
+    });
   }
 }
