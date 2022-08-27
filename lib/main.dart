@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:qbar_app/domain/blocs/history/history_bloc.dart';
 
 import 'package:qbar_app/ui/themes/custom_theme.dart';
 import 'package:qbar_app/ui/pages/pages.dart';
@@ -15,6 +16,7 @@ void main() async {
         BlocProvider(create: (context) => CameraBloc()),
         BlocProvider(create: (context) => GenerateBloc()), 
         BlocProvider(create: (context) => FavoritesBloc()),
+        BlocProvider(create: (context) => HistoryBloc()),
         BlocProvider(create: (context) => IsarBloc()),
       ], 
       child: const MyApp()
@@ -44,6 +46,7 @@ class MyApp extends StatelessWidget {
         'result'    :(_) => const ResultPage(),
         'generate'  :(_) => const GeneratePage(),
         'favorites' :(_) => const FavoritesPage(),
+        'history'   :(_) => const HistoryPage()
       },
     );
   }

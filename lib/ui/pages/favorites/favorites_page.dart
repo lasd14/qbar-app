@@ -23,9 +23,10 @@ class FavoritesPage extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {
+          onPressed: () async {
             final favoritesBloc = BlocProvider.of<FavoritesBloc>(context);
             Navigator.of(context).pop();
+            await Future.delayed(const Duration(milliseconds: 500));
             favoritesBloc.add(OnDataIsNotLoadedEvent());
           },
           icon: const Icon(Icons.arrow_back,
@@ -164,7 +165,9 @@ class FavoritesList extends StatelessWidget {
                               favorite.qrscan,
                               style: const TextStyle(
                                   fontSize: 14.0,
-                                  color: CustomTheme.whiteColor),
+                                  color: CustomTheme.whiteColor), 
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ),
