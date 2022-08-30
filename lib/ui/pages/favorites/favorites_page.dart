@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qbar_app/data/database/favorites.dart';
+import 'package:qbar_app/data/database/tables.dart';
 import 'package:qbar_app/domain/blocs/blocs.dart';
 import 'package:qbar_app/ui/themes/custom_theme.dart';
 
@@ -37,8 +37,7 @@ class FavoritesPage extends StatelessWidget {
         centerTitle: true,
         title: const Text(
           'Favoritos',
-          style: TextStyle(
-              color: CustomTheme.whiteColor, fontWeight: FontWeight.bold),
+          style: TextStyle(color: CustomTheme.whiteColor, fontWeight: FontWeight.bold),
         ),
       ),
       body: Column(
@@ -127,8 +126,7 @@ class FavoritesList extends StatelessWidget {
         final favorite = favorites[index];
         final parseUrl = Uri.parse(favorite.qrscan);
         return Padding(
-          padding: const EdgeInsets.only(
-              top: 6.0, left: 12.0, right: 12.0, bottom: 6.0),
+          padding: const EdgeInsets.only(top: 6.0, left: 12.0, right: 12.0, bottom: 6.0),
           child: Card(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12.0),

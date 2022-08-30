@@ -23,7 +23,6 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
   }
 
   Widget getDataCode(String dataCode) {
-
     add(OnCodeFavoritesEvent(dataCode));
     return QrImage(
       data: dataCode, 

@@ -19,6 +19,9 @@ class ResultPage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final parseUrl = Uri.parse(scanResult!.rawContent);
     final scanBloc = BlocProvider.of<ScanBloc>(context);
+    final isarBloc = BlocProvider.of<IsarBloc>(context);
+
+    isarBloc.insertHistory(scanResult!.rawContent);
 
     return Scaffold(
       appBar: AppBar(

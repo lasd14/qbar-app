@@ -16,3 +16,8 @@ class OnFavoritesListEvent extends IsarEvent {
   final List<Favorites> favorites;
   const OnFavoritesListEvent(this.favorites);
 }
+
+class OnHistoriesListEvent extends IsarEvent {
+  final List<Histories> histories;
+  const OnHistoriesListEvent(this.histories);
+}

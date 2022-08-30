@@ -109,9 +109,9 @@ class GeneratePage extends StatelessWidget {
               width: size.width * 0.9,
               child: ElevatedButton(
                 onPressed: () {
-
+                  final isarBloc = BlocProvider.of<IsarBloc>(context);
                   generateCode(generateBloc, context);
-
+                  isarBloc.insertHistory(generateBloc.generateController.text);
                 },
                 style: ElevatedButton.styleFrom(
                   elevation: 0.0,

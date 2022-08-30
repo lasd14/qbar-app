@@ -16,6 +16,8 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
 
   HistoryBloc() : super(const HistoryState()) {
     on<OnCodeHistoryEvent>((event, emit) => emit( state.copyWith( dataCodeHistory: event.dataCodeHistory )));
+    on<OnHistoryIsLoadedEvent>((event, emit) => emit( state.copyWith( isLoadedHistory: true )));
+    on<OnHistoryIsNotLoadedEvent>((event, emit) => emit( state.copyWith( isLoadedHistory: false )));
   }
 
   Widget getDataCodeHistory(String dataCodeHistory) {
@@ -55,6 +57,18 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
     if (!await launchUrl(url)) {
       throw 'Could not launch $url';
     }
+  }
+
+  Future loadHistory() async {
+    Future.delayed(const Duration(milliseconds: 2000), () {
+      add(OnHistoryIsLoadedEvent());
+    });
+  }
+
+  Future notLoadHistory() async {
+    Future.delayed(const Duration(milliseconds: 1000), () {
+      add(OnHistoryIsNotLoadedEvent());
+    });
   }
 
 

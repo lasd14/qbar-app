@@ -131,7 +131,7 @@ class HomePage extends StatelessWidget {
                   colorDark: CustomTheme.yellowDarkColor,
                   icon: Icons.history_rounded,
                   nameIcon: 'Historial',
-                  route: '',
+                  route: 'history',
                 ),
               ],
             )
