@@ -42,11 +42,13 @@ class MyApp extends StatelessWidget {
       builder: EasyLoading.init(),
       initialRoute: 'home',
       routes: {
-        'home'      :(_) => const HomePage(),
-        'result'    :(_) => const ResultPage(),
-        'generate'  :(_) => const GeneratePage(),
-        'favorites' :(_) => const FavoritesPage(),
-        'history'   :(_) => const HistoryPage()
+        'home'            :(_) => const HomePage(),
+        'result'          :(_) => const ResultPage(),
+        'generate'        :(_) => const GeneratePage(),
+        'favorites'       :(_) => const FavoritesPage(),
+        'history'         :(_) => const HistoryPage(),
+        'personalize'     :(_) => const PersonalizePage(),
+        'personalizeQR'   :(_) => const PersonalizeQrPage(),
       },
     );
   }

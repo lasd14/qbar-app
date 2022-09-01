@@ -122,8 +122,8 @@ class HomePage extends StatelessWidget {
                   colorLight: CustomTheme.blueLightColor,
                   colorDark: CustomTheme.blueDarkColor,
                   icon: Icons.share_rounded,
-                  nameIcon: 'Compartir',
-                  route: '',
+                  nameIcon: 'Personalizar',
+                  route: 'personalize',
                 ),
                 ButtonsHome(
                   size: size,
