@@ -6,3 +6,8 @@ abstract class PersonalizeEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class OnChangeColorQrPersonalizeEvent extends PersonalizeEvent {
+  final Color colorQR;
+  const OnChangeColorQrPersonalizeEvent(this.colorQR);
+}

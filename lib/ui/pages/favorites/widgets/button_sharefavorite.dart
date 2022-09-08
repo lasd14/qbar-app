@@ -11,14 +11,14 @@ class ButtonShareFavorite extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      backgroundColor:CustomTheme.primaryColor,
+      backgroundColor:CustomTheme.whiteColor,
       radius: 23.0,
       child: IconButton(
         onPressed: () {
           final favoritesBloc = BlocProvider.of<FavoritesBloc>(context);
           favoritesBloc.shareScreenshotQr();
         },
-        icon: const Icon(Icons.share, color: CustomTheme.whiteColor, size: 23.0)
+        icon: const Icon(Icons.share, color: CustomTheme.primaryColor, size: 23.0)
       ),
     );
   }

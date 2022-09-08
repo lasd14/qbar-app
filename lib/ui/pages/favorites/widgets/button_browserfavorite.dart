@@ -16,7 +16,7 @@ class ButtonBrowserFavorite extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      backgroundColor:CustomTheme.primaryColor,
+      backgroundColor:CustomTheme.whiteColor,
       radius: 23.0,
       child: IconButton(
         onPressed: () {
@@ -31,7 +31,7 @@ class ButtonBrowserFavorite extends StatelessWidget {
             favoritesBloc.launchCode(url);
           }
         },
-        icon: const Icon(Icons.open_in_browser, color: CustomTheme.whiteColor, size: 23.0)
+        icon: const Icon(Icons.open_in_browser, color: CustomTheme.primaryColor, size: 23.0)
         ),
     );
   }

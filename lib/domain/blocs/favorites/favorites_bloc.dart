@@ -45,7 +45,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
   }
   
   //TODO: PASAR UN PARAMETRO PARA CAMBIAR EL NOMBRE DE QR.PNG Y EL TEXTO COMPARTIDO
-  Future<dynamic> shareScreenshotQr() {
+  Future<dynamic> shareScreenshotQr() async {
     return ShareFilesAndScreenshotWidgets().shareScreenshot(
       previewContainer, 
       originalSize,
@@ -53,6 +53,13 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
       "qr.png",
       "qr/png",
       text: "QR Compartido desde QBar App ✅",
+    );
+  }
+
+  Future<dynamic> shareScreenshotFavoriteQR() {
+    return ShareFilesAndScreenshotWidgets().takeScreenshot(
+      previewContainer, 
+      originalSize,
     );
   }
 

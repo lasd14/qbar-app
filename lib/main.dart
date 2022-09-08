@@ -18,6 +18,8 @@ void main() async {
         BlocProvider(create: (context) => FavoritesBloc()),
         BlocProvider(create: (context) => HistoryBloc()),
         BlocProvider(create: (context) => IsarBloc()),
+        BlocProvider(create: (context) => GenerateBloc()),
+        BlocProvider(create: (context) => PersonalizeBloc()),
       ], 
       child: const MyApp()
     )

@@ -135,14 +135,23 @@ class FavoritesList extends StatelessWidget {
               height: 100,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12.0),
-                  color: CustomTheme.secondaryColor),
+                  gradient: const LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                        CustomTheme.primaryColor,
+                      CustomTheme.darkColor
+                    ]
+                  )
+                ),
               child: Row(
                 children: [
                   Center(
                     child: Padding(
                         padding: const EdgeInsets.only(
                             top: 10.0, left: 10.0, bottom: 10.0),
-                        child: favoritesBloc.getDataCode(favorite.qrscan)),
+                        child: favoritesBloc.getDataCode(favorite.qrscan)
+                        ),
                   ),
                   Expanded(
                       child: Container(
@@ -182,9 +191,9 @@ class FavoritesList extends StatelessWidget {
                           children: [
                             ButtonBrowserFavorite(url: parseUrl),
                             const SizedBox(
-                              width: 5.0,
+                              width: 7.0,
                             ),
-                            const ButtonShareFavorite(),
+                            // const ButtonShareFavorite(),
                           ],
                         ),
                       )

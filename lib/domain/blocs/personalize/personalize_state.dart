@@ -1,10 +1,19 @@
 part of 'personalize_bloc.dart';
 
-abstract class PersonalizeState extends Equatable {
-  const PersonalizeState();
+class PersonalizeState extends Equatable {
+
+  final Color colorQR;
+
+  const PersonalizeState({
+    this.colorQR = Colors.black,
+  });
+
+  PersonalizeState copyWith({
+    Color? colorQR,
+  }) => PersonalizeState(
+    colorQR: colorQR ?? this.colorQR,
+  );
   
   @override
-  List<Object> get props => [];
+  List<Object> get props => [ colorQR ];
 }
-
-class PersonalizeInitial extends PersonalizeState {}
