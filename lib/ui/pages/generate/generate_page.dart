@@ -70,7 +70,8 @@ class GeneratePage extends StatelessWidget {
                 controller: generateBloc.generateController,
                 autofocus: false,
                 keyboardType: TextInputType.url,
-                textInputAction: TextInputAction.none,
+                textInputAction: TextInputAction.done,
+                
                 autocorrect: false,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
