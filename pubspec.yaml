@@ -36,6 +36,7 @@ dependencies:
   flutter_bloc: ^8.1.1
   flutter_easyloading: ^3.0.5
   flutter_launcher_icons: ^0.10.0
+  flutter_markdown: ^0.6.12
   flutter_native_splash: ^2.2.10+1
   flutter_ripple: ^0.0.3
   flutter_styled_toast: ^2.1.3

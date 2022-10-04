@@ -1,7 +1,9 @@
 import 'package:barcode_scan2/barcode_scan2.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qbar_app/domain/blocs/blocs.dart';
+import 'package:qbar_app/domain/helpers/policy_dialog.dart';
 import 'package:qbar_app/ui/pages/result/result_page.dart';
 import 'package:qbar_app/ui/themes/custom_theme.dart';
 import 'package:qbar_app/ui/pages/home/widgets/buttons_home.dart';
@@ -134,6 +136,55 @@ class HomePage extends StatelessWidget {
                   route: 'history',
                 ),
               ],
+            ),
+            SizedBox(
+              height: size.height * 0.05,
+            ),
+            RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                text: 'Políticas de Privacidad de QbarApp\n',
+                style: const TextStyle(color: CustomTheme.blackColor, fontSize: 12.0),
+                children: [
+                  TextSpan(
+                    text: "Términos-Condiciones",
+                    style: const TextStyle(color: CustomTheme.primaryColor, fontWeight: FontWeight.bold),
+                    recognizer: TapGestureRecognizer()..onTap = () {
+                      //Alert Dialog
+                      showDialog(
+                        context: context, 
+                        builder: (context) {
+                          return PolicyDialog(
+                            radius: 20.0, 
+                            mdFileName: 'terms_conditions.md',
+                          );
+                        }
+                      );
+                    }
+                  ),
+                  const TextSpan(
+                    text: " y "
+                  ),
+                  TextSpan(
+                    text: "Política de Privacidad",
+                    style: const TextStyle(color: CustomTheme.primaryColor, fontWeight: FontWeight.bold),
+                    recognizer: TapGestureRecognizer()..onTap = () {
+                      //Alert Dialog
+                      showDialog(
+                        context: context, 
+                        builder: (context) {
+                          return PolicyDialog(
+                            radius: 20.0, 
+                            mdFileName: 'privacy_policy.md',
+                          );
+                        }
+                      );
+                    }
+                  )
+                ]
+              
+              ),
+              
             )
           ],
         ),
