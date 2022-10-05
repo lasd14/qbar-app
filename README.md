@@ -1,16 +1,9 @@
-# qbar_app
+# QbarApp
 
-A new Flutter project.
+QbarApp is a simple QR code scanning app made with Flutter applying BLoC and Clean Architecture
 
-## Getting Started
+## About
 
-This project is a starting point for a Flutter application.
+QbarApp is a QR code scanning application that has various functionalities such as the possibility of scanning QR codes, sharing the scanned codes, saving them in the phone's local storage, creating a list of favorites of the scanned codes and customizing your favorite codes.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Image text](https://github.com/lasd14/qbar-app/blob/master/VJigLb7iEArd_1024_500.png)
