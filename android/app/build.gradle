@@ -50,7 +50,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.qbar_app"
+        applicationId "com.lsalgado.qbar_app"
         minSdkVersion 21
         targetSdkVersion 31
         versionCode 1
