@@ -1,4 +1,4 @@
-package com.example.qbar_app
+package com.lsalgado.qbar_app
 
 import io.flutter.embedding.android.FlutterActivity
 
